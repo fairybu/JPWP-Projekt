@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".system_arabski_reg1" />
         <activity android:name=".system_rzymski_reg1" />
-        <activity android:name=".system_binarny_reg1"></activity>
+        <activity android:name=".system_binarny_reg1" />
+        <activity android:name=".ara_rund1"></activity>
     </application>
 
 </manifest>

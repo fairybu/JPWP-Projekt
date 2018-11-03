@@ -9,6 +9,7 @@ import android.widget.Button;
 public class system_arabski_reg1 extends AppCompatActivity {
 
     public Button pow_ara_reg1;
+    public Button da_ar_reg1;
 
     public void pow_ara(){
         pow_ara_reg1=(Button)findViewById(R.id.pow_ara_reg1);
@@ -23,6 +24,20 @@ public class system_arabski_reg1 extends AppCompatActivity {
         }));
     }
 
+    public void da_ara(){
+        da_ar_reg1=(Button)findViewById(R.id.da_ar_reg1);
+        da_ar_reg1.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent da_ara_reg=new Intent(system_arabski_reg1.this, ara_rund1.class);
+
+                startActivity(da_ara_reg);
+            }
+        }));
+    }
+
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -31,6 +46,8 @@ public class system_arabski_reg1 extends AppCompatActivity {
             hideSystemUI();
         }
     }
+
+
 
     private void hideSystemUI() {
         // Enables regular immersive mode.
@@ -54,5 +71,6 @@ public class system_arabski_reg1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_system_arabski_reg1);
         pow_ara();
+        da_ara();
     }
 }
