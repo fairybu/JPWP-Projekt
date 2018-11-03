@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".system_arabski_reg1" />
+        <activity android:name=".system_rzymski_reg1" />
+        <activity android:name=".system_binarny_reg1"></activity>
     </application>
 
 </manifest>

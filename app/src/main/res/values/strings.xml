@@ -6,4 +6,7 @@
     <string name="system_rzymski">system rzysmki</string>
     <string name="system_binarny">system binarny</string>
     <string name="spr">spr</string>
+    <string name="powrot_bin">powrót</string>
+    <string name="pow_rzy_reg1">powrót</string>
+    <string name="pow_ara_reg1">powrót</string>
 </resources>
