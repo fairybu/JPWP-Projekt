@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">FirstApp</string>
+    <string name="app_name">01</string>
     <string name="witaj_w">Witaj w</string>
     <string name="_01">01</string>
+    <string name="system_arabski">system arabski</string>
+    <string name="system_rzymski">system rzysmki</string>
+    <string name="system_binarny">system binarny</string>
 </resources>
