@@ -11,4 +11,6 @@
     <string name="pow_ara_reg1">powrót</string>
     <string name="da_ar_reg1">dalej</string>
     <string name="text_spr">sprawdzanko</string>
+    <string name="regula1" translatable="false">"   REGULA 1"</string>
+    <string name="po_run1_menu">Powrót do menu</string>
 </resources>

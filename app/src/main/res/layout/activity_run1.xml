@@ -4,21 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".system_rzymski_reg1">
+    tools:context=".run_1">
+
+    <TextView
+        android:id="@+id/run1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="478dp"
+        android:text="@string/text_spr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/pow_rzy_reg1"
+        android:id="@+id/po_run1_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/pow_rzy_reg1"
+        android:text="@string/po_run1_menu"
+        android:fontFamily="@font/nixieone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintTop_toBottomOf="@+id/run1" />
+
 </android.support.constraint.ConstraintLayout>

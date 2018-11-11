@@ -5,37 +5,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class system_arabski_reg1 extends AppCompatActivity {
+public class run_1 extends AppCompatActivity {
 
-    public Button pow_ara_reg1;
-    public Button da_ar_reg1;
 
-    public void pow_ara(){
-        pow_ara_reg1=(Button)findViewById(R.id.pow_ara_reg1);
-        pow_ara_reg1.setOnClickListener((new View.OnClickListener() {
+    public Button po_run1_main;
+
+    public void przycisk(){
+        po_run1_main=(Button)findViewById(R.id.po_run1_main);
+        po_run1_main.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent pow_ara_reg=new Intent(system_arabski_reg1.this, MainActivity.class);
+                Intent powrot_menu=new Intent(run_1.this, MainActivity.class);
 
-                startActivity(pow_ara_reg);
+                startActivity(powrot_menu);
             }
         }));
     }
 
-    public void da_ara(){
-        da_ar_reg1=(Button)findViewById(R.id.da_ar_reg1);
-        da_ar_reg1.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_run1);
 
-                Intent da_ara_reg=new Intent(system_arabski_reg1.this, ara_rund1.class);
+        String tryb = getIntent().getStringExtra("tryb");
+        TextView textView = findViewById(R.id.run1);
+        textView.setText(tryb);
 
-                startActivity(da_ara_reg);
-            }
-        }));
+        przycisk();
     }
+
+
 
 
 
@@ -46,8 +48,6 @@ public class system_arabski_reg1 extends AppCompatActivity {
             hideSystemUI();
         }
     }
-
-
 
     private void hideSystemUI() {
         // Enables regular immersive mode.
@@ -64,13 +64,5 @@ public class system_arabski_reg1 extends AppCompatActivity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_system_arabski_reg1);
-        pow_ara();
-        da_ara();
     }
 }

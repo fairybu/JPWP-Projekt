@@ -5,21 +5,41 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class system_binarny_reg1 extends AppCompatActivity {
+public class reg_1 extends AppCompatActivity {
 
+    public Button powrot;
+    public Button dalej;
 
-    public Button pow_bin_reg;
-
-    public void pow_bin(){
-        pow_bin_reg=(Button)findViewById(R.id.pow_bin_reg);
-        pow_bin_reg.setOnClickListener((new View.OnClickListener() {
+    //przycisk powrotu do menu głownego
+    public void przycisk(){
+        powrot=(Button)findViewById(R.id.powrot);
+        powrot.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent pow_bin_reg=new Intent(system_binarny_reg1.this, MainActivity.class);
+                Intent powrot_menu=new Intent(reg_1.this, MainActivity.class);
 
-                startActivity(pow_bin_reg);
+                startActivity(powrot_menu);
+            }
+        }));
+
+        dalej=(Button)findViewById(R.id.dalej);
+        dalej.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String tryb_m = getIntent().getStringExtra("tryb_m");
+                TextView textView = findViewById(R.id.regula1);
+                textView.setText(tryb_m);
+
+
+
+                Intent dalej_gra=new Intent(reg_1.this, run_1.class);
+                dalej_gra.putExtra("tryb",tryb_m);
+
+                startActivity(dalej_gra);
             }
         }));
     }
@@ -31,6 +51,8 @@ public class system_binarny_reg1 extends AppCompatActivity {
             hideSystemUI();
         }
     }
+
+
 
     private void hideSystemUI() {
         // Enables regular immersive mode.
@@ -52,7 +74,10 @@ public class system_binarny_reg1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_system_binarny_reg1);
-        pow_bin();
+        setContentView(R.layout.activity_reg_1);
+
+
+
+        przycisk();
     }
 }

@@ -1,6 +1,5 @@
 package com.example.firstapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,51 +8,59 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
+
+
     public Button sys_arabski;
     public Button sys_rzymski;
     public Button sys_binarny;
 
-
-    public void sys_ara(){
+    // przejście do systemu
+    public void przejscie(){
         sys_arabski= (Button)findViewById(R.id.sys_arabski);
         sys_arabski.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent ot_ar = new Intent (MainActivity.this,system_arabski_reg1.class);
-
+                Intent ot_ar = new Intent (MainActivity.this,reg_1.class);
+                ot_ar.putExtra("tryb_m","1");
                 startActivity(ot_ar);
             }
-        });
-    }
 
-    public void sys_rzy(){
+        });
+
         sys_rzymski=(Button)findViewById(R.id.sys_rzymski);
         sys_rzymski.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent ot_rzy= new Intent(MainActivity.this, system_rzymski_reg1.class);
+                Intent ot_rzy= new Intent(MainActivity.this, reg_1.class);
+                ot_rzy.putExtra("tryb_m","2");
 
                 startActivity(ot_rzy);
             }
-        });
 
-    }
+            });
 
-    public void sys_bin(){
         sys_binarny=(Button)findViewById(R.id.sys_binarny);
         sys_binarny.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent ot_bin= new Intent(MainActivity.this,system_binarny_reg1.class);
+                Intent ot_bin= new Intent(MainActivity.this,reg_1.class);
+                ot_bin.putExtra("tryb_m","3");
 
                 startActivity(ot_bin);
             }
-        });
-    }
 
+
+
+    });
+
+  }
+
+    // ukrywanie przycisków
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -62,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    // ukrywanie przycisków u dołu
     private void hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
@@ -84,8 +93,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sys_ara();
-        sys_rzy();
-        sys_bin();
+
+        //przejścia do poszczególnych okien
+        przejscie();
+
     }
 }
