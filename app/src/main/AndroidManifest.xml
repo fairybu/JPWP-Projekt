@@ -19,7 +19,8 @@
         <activity android:name=".reg_1" />
         <activity android:name=".run_1" />
         <activity android:name=".congrats" />
-        <activity android:name=".reg_2"></activity>
+        <activity android:name=".reg_2" />
+        <activity android:name=".run_2"></activity>
     </application>
 
 </manifest>
