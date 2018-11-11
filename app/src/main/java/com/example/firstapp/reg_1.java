@@ -30,13 +30,11 @@ public class reg_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String tryb_m = getIntent().getStringExtra("tryb_m");
-                TextView textView = findViewById(R.id.regula1);
-                textView.setText(tryb_m);
 
 
-
+                // otwieranie kolejnego okna przy przenoszeniu zmiennej dotyczącej trybu gry
                 Intent dalej_gra=new Intent(reg_1.this, run_1.class);
+                String tryb_m = getIntent().getStringExtra("tryb_m");
                 dalej_gra.putExtra("tryb",tryb_m);
 
                 startActivity(dalej_gra);

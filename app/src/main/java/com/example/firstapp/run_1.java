@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Timer;
+
 public class run_1 extends AppCompatActivity {
 
 
     public Button po_run1_main;
 
+    //przejście do menu głownego
     public void przycisk(){
         po_run1_main=(Button)findViewById(R.id.po_run1_main);
         po_run1_main.setOnClickListener((new View.OnClickListener() {
@@ -25,14 +28,12 @@ public class run_1 extends AppCompatActivity {
         }));
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run1);
-
-        String tryb = getIntent().getStringExtra("tryb");
-        TextView textView = findViewById(R.id.run1);
-        textView.setText(tryb);
 
         przycisk();
     }

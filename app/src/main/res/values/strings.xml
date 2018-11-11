@@ -10,7 +10,8 @@
     <string name="pow_rzy_reg1">powrót</string>
     <string name="pow_ara_reg1">powrót</string>
     <string name="da_ar_reg1">dalej</string>
-    <string name="text_spr">sprawdzanko</string>
-    <string name="regula1" translatable="false">"   REGULA 1"</string>
     <string name="po_run1_menu">Powrót do menu</string>
+    <string name="zadanie_1">"Zadanie : "</string>
+    <string name="tresc1">Ustaw liczby w sposób rosnący...</string>
+    <string name="tresc_1">tresc_1</string>
 </resources>
