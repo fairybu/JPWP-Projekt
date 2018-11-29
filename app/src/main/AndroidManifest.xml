@@ -16,11 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".reg_1" />
-        <activity android:name=".run_1" />
+        <activity android:name=".reg" />
+        <activity android:name=".run" />
         <activity android:name=".congrats" />
-        <activity android:name=".reg_2" />
-        <activity android:name=".run_2"></activity>
     </application>
 
 </manifest>

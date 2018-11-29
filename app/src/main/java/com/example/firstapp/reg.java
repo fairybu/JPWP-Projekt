@@ -5,42 +5,41 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import java.util.Timer;
+public class reg extends AppCompatActivity {
 
-public class run_1 extends AppCompatActivity {
+    public Button powrot;
+    public Button dalej;
 
-
-    public Button po_run1_main;
-
-    //przejście do menu głownego
+    //przycisk powrotu do menu głownego
     public void przycisk(){
-        po_run1_main=(Button)findViewById(R.id.po_run1_main);
-        po_run1_main.setOnClickListener((new View.OnClickListener() {
+        powrot=(Button)findViewById(R.id.powrot);
+        powrot.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent powrot_menu=new Intent(run_1.this, MainActivity.class);
+                Intent powrot_menu=new Intent(reg.this, MainActivity.class);
 
                 startActivity(powrot_menu);
             }
         }));
+
+        dalej=(Button)findViewById(R.id.dalej);
+        dalej.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                // otwieranie kolejnego okna przy przenoszeniu zmiennej dotyczącej trybu gry
+                Intent dalej_gra=new Intent(reg.this, run.class);
+                String tryb_m = getIntent().getStringExtra("tryb_m");
+                dalej_gra.putExtra("tryb",tryb_m);
+
+                startActivity(dalej_gra);
+            }
+        }));
     }
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_run1);
-
-        przycisk();
-    }
-
-
-
-
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -49,6 +48,8 @@ public class run_1 extends AppCompatActivity {
             hideSystemUI();
         }
     }
+
+
 
     private void hideSystemUI() {
         // Enables regular immersive mode.
@@ -65,5 +66,15 @@ public class run_1 extends AppCompatActivity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reg);
+
+
+
+        przycisk();
     }
 }

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent ot_ar = new Intent (MainActivity.this,reg_1.class);
+                Intent ot_ar = new Intent (MainActivity.this,reg.class);
                 ot_ar.putExtra("tryb_m","1");
                 startActivity(ot_ar);
             }
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent ot_rzy= new Intent(MainActivity.this, reg_1.class);
+                Intent ot_rzy= new Intent(MainActivity.this, reg.class);
                 ot_rzy.putExtra("tryb_m","2");
 
                 startActivity(ot_rzy);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent ot_bin= new Intent(MainActivity.this,reg_1.class);
+                Intent ot_bin= new Intent(MainActivity.this,reg.class);
                 ot_bin.putExtra("tryb_m","3");
 
                 startActivity(ot_bin);
