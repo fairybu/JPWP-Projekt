@@ -5,50 +5,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class reg extends AppCompatActivity {
+public class info extends AppCompatActivity {
 
-    public Button powrot;
-    public Button dalej;
-
-    //przycisk powrotu do menu głownego
-    public void przycisk(){
-        powrot=(Button)findViewById(R.id.powrot);
-        powrot.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent powrot_menu=new Intent(reg.this, MainActivity.class);
-
-                startActivity(powrot_menu);
-            }
-        }));
-
-        dalej=(Button)findViewById(R.id.dalej);
-        dalej.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // otwieranie kolejnego okna przy przenoszeniu zmiennej dotyczącej trybu gry
-                Intent dalej_gra=new Intent(reg.this, run.class);
-                String tryb_m = getIntent().getStringExtra("tryb_m");
-                dalej_gra.putExtra("tryb",tryb_m);
-
-                startActivity(dalej_gra);
-            }
-        }));
-    }
-
-
+    private TextView komunikat;
+    private Button powrot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reg);
+        setContentView(R.layout.activity_info);
 
+        // pobranie informaji że przekroczono czas
+        String info=getIntent().getStringExtra("info");
 
+        komunikat=(TextView) findViewById(R.id.kom_1);
+        komunikat.setText(info);
 
-        przycisk();
+        powrot=(Button) findViewById(R.id.powrot);
+        powrot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent powrot= new Intent(info.this, MainActivity.class);
+                startActivity(powrot);
+
+            }
+        });
     }
 
 
@@ -59,8 +43,6 @@ public class reg extends AppCompatActivity {
             hideSystemUI();
         }
     }
-
-
 
     private void hideSystemUI() {
         // Enables regular immersive mode.
