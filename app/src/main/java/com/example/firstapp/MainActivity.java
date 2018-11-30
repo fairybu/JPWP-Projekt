@@ -11,9 +11,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    String buttontext;
     public Button sys_arabski;
-    public Button sys_rzymski;
+    public Button sys_hex;
     public Button sys_binarny;
 
     // przejście do systemu
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        sys_rzymski=(Button)findViewById(R.id.sys_rzymski);
-        sys_rzymski.setOnClickListener(new View.OnClickListener() {
+        sys_hex =(Button)findViewById(R.id.sys_hex);
+        sys_hex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent ot_bin= new Intent(MainActivity.this,reg.class);
                 ot_bin.putExtra("tryb_m","3");
 
+
+
                 startActivity(ot_bin);
             }
 
@@ -59,6 +61,20 @@ public class MainActivity extends AppCompatActivity {
     });
 
   }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+
+        //przejścia do poszczególnych okien
+        przejscie();
+
+    }
+
 
     // ukrywanie przycisków
     @Override
@@ -89,13 +105,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //przejścia do poszczególnych okien
-        przejscie();
-
-    }
 }

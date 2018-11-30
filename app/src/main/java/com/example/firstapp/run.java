@@ -5,16 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.Random;
 
 public class run extends AppCompatActivity {
 
 
-    public Button po_run1_main;
+    public Button po_run_main;
 
     //przejście do menu głownego
     public void przycisk(){
-        po_run1_main=(Button)findViewById(R.id.po_run1_main);
-        po_run1_main.setOnClickListener((new View.OnClickListener() {
+        po_run_main=(Button)findViewById(R.id.po_run);
+        po_run_main.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -25,17 +28,53 @@ public class run extends AppCompatActivity {
         }));
     }
 
+    private static final int[] idArray ={R.id.Button_1,R.id.Button_2,R.id.Button_3,
+            R.id.Button_4,R.id.Button_5,R.id.Button_6,
+            R.id.Button_7,R.id.Button_8,R.id.Button_9,
+            R.id.Button_10,R.id.Button_11,R.id.Button_12};
 
+
+    private Button[] button = new  Button[idArray.length];
+
+    int i;
+    String buttonText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_run1);
+        setContentView(R.layout.activity_run);
 
         przycisk();
+
+        for(i=0; i<idArray.length;i++){
+
+        button [i]=(Button)findViewById(idArray[i]);
+
+        Random r= new Random();
+
+        int value=r.nextInt(100)+1;
+
+        button[i].setText(Integer.toString(value));
+
+
+
+
+        button[i].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Random r= new Random();
+                Toast.makeText(getApplicationContext(),Integer.toString(r.nextInt(100)+1),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+        }
+
     }
-
-
 
 
 
