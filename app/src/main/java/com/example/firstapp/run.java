@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
+import java.util.Timer;
 
 public class run extends AppCompatActivity {
 
@@ -19,14 +22,15 @@ public class run extends AppCompatActivity {
     //przejście do menu głownego
     public void przycisk(){
         po_run_main=(Button)findViewById(R.id.po_run);
-        po_run_main.setOnClickListener((new View.OnClickListener() {
+        po_run_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                countDownTimer.cancel();
                 Intent powrot_menu=new Intent(run.this, MainActivity.class);
                 startActivity(powrot_menu);
             }
-        }));
+        });
     }
     //TABLIca z przyciskami
     private static final int[] idArray ={R.id.Button_1,R.id.Button_2,R.id.Button_3,
@@ -37,50 +41,60 @@ public class run extends AppCompatActivity {
 
     private Button[] button = new  Button[idArray.length];
 
+
     int i;
     String buttonText;
 
-    Random r= new Random();
+
 
     //zmienne do licznnika
     private TextView licznik;
-    private CountDownTimer countDownTimer;
-    private long timeLeftinMilliseconds=11000;
-    private  boolean TimeRunning;
+    public CountDownTimer countDownTimer;
+    public long timeLeftinMilliseconds=11000;
+    public  boolean TimeRunning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
 
-        String tryb=getIntent().getStringExtra("tryb"); //pobieram info jaki tryb gry wybrano
+        String tryb = getIntent().getStringExtra("tryb"); //pobieram info jaki tryb gry wybrano
 
 
-        int wys=Integer.parseInt(tryb); //zamiana stringa trybu na intigera bo inaczej nie chciało dziłać
+        int wys = Integer.parseInt(tryb); //zamiana stringa trybu na intigera bo inaczej nie chciało dziłać
 
-        licznik=findViewById(R.id.licznik);
+        licznik = findViewById(R.id.licznik);
 
         StartStop();// wywołanie funkcji licznika
 
         przycisk();//wywołanie funkci powrotu
 
         //przypisanie wartości buttom
-        for(i=0; i<idArray.length;i++){
+        for (i = 0; i < idArray.length; i++) {
 
-        button [i]=(Button)findViewById(idArray[i]);
+            button[i] = (Button) findViewById(idArray[i]);
+
+            Random rand = new Random();
+            int value;
 
 
-        final int value=new Random().nextInt(20)+1;
+            if (wys == 1) {
 
+                for (int counte = 0; counte < idArray.length; counte++) {
+                    value = (int) (Math.random() * 20) + 1;
+                    button[i].setText(Integer.toString(value));
+                }
+            } else if (wys == 2) {
 
-        if(wys==1){
-            button[i].setText(Integer.toString(value));
-        }else if(wys==2){
-            button[i].setText(Integer.toHexString(value));
-        }else{
-            button[i].setText(Integer.toBinaryString(value));
-        }
+                value = 1 + rand.nextInt(20);
+                button[i].setText(Integer.toHexString(value));
+            } else {
+                for (int counte = 0; counte < idArray.length; counte++) {
+                    value = 1 + rand.nextInt(20);
+                    button[i].setText(Integer.toHexString(value));
+                }
 
+            }
 
         }
 
@@ -138,9 +152,11 @@ public class run extends AppCompatActivity {
         //jak skończy się czas to przeskskuje do koljnego okna
         if(minuty==0&&sekundy==0)
         {
+
             Intent info=new Intent(run.this, info.class);
-            info.putExtra("info","Skończył się czas, spróbuj ponownie! ");
+            info.putExtra("info","Skończył się czas");
             startActivity(info);
+
         }
     }
 
