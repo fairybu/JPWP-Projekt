@@ -7,12 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Timer;
+import static java.lang.Integer.parseInt;
 
 public class run extends AppCompatActivity {
 
@@ -50,7 +45,7 @@ public class run extends AppCompatActivity {
     //zmienne do licznnika
     private TextView licznik;
     public CountDownTimer countDownTimer;
-    public long timeLeftinMilliseconds=11000;
+    public long timeLeftinMilliseconds=181000;
     public  boolean TimeRunning;
 
     @Override
@@ -61,7 +56,7 @@ public class run extends AppCompatActivity {
         String tryb = getIntent().getStringExtra("tryb"); //pobieram info jaki tryb gry wybrano
 
 
-        int wys = Integer.parseInt(tryb); //zamiana stringa trybu na intigera bo inaczej nie chciało dziłać
+        int wys = parseInt(tryb); //zamiana stringa trybu na intigera bo inaczej nie chciało dziłać
 
         licznik = findViewById(R.id.licznik);
 
@@ -70,31 +65,43 @@ public class run extends AppCompatActivity {
         przycisk();//wywołanie funkci powrotu
 
         //przypisanie wartości buttom
+
+
+        int zakres;
+
+        if(wys==1 || wys==2) zakres=20;
+        else zakres=15;
+
+        int[] tab=new int[idArray.length];
         for (i = 0; i < idArray.length; i++) {
 
             button[i] = (Button) findViewById(idArray[i]);
 
-            Random rand = new Random();
-            int value;
-
-
-            if (wys == 1) {
-
-                for (int counte = 0; counte < idArray.length; counte++) {
-                    value = (int) (Math.random() * 20) + 1;
-                    button[i].setText(Integer.toString(value));
+            tab[i]= (int)Math.floor(Math.random()*zakres);
+            for (int j=0;j<i;j++){
+                if(tab[i]==tab[j]){
+                    tab[i]=(int)Math.floor(Math.random()*zakres);
+                    j=0;
                 }
-            } else if (wys == 2) {
-
-                value = 1 + rand.nextInt(20);
-                button[i].setText(Integer.toHexString(value));
-            } else {
-                for (int counte = 0; counte < idArray.length; counte++) {
-                    value = 1 + rand.nextInt(20);
-                    button[i].setText(Integer.toHexString(value));
-                }
-
             }
+
+
+          if (wys == 1) button[i].setText(Integer.toString(tab[i]));
+              else if (wys == 2) {
+
+                  String wynik= Integer.toHexString(tab[i]);
+                  if(wynik.length()==2) button[i].setText("000000"+wynik);
+                  else button[i].setText("0000000"+wynik);
+
+              }
+              else {
+                  String wynik=Integer.toBinaryString(tab[i]);
+                 if(wynik.length()==1) button[i].setText("000"+wynik);
+                 else if(wynik.length()==2) button[i].setText("00"+wynik);
+                 else if(wynik.length()==3) button[i].setText("0"+wynik);
+                 else button[i].setText(wynik);
+
+              }
 
         }
 
