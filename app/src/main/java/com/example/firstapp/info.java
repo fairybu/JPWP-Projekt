@@ -3,9 +3,12 @@ package com.example.firstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import static java.lang.Integer.parseInt;
 
 public class info extends AppCompatActivity {
 
@@ -17,24 +20,34 @@ public class info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        // pobranie informaji że przekroczono czas
-        String info=getIntent().getStringExtra("info");
+        String tryb_m = getIntent().getStringExtra("tryb");
+        String runda_m = getIntent().getStringExtra("runda");
+        String info = getIntent().getStringExtra("info");
+
+        int wys = parseInt(info);
 
         komunikat=(TextView) findViewById(R.id.kom_1);
-        komunikat.setText(info);
 
-        powrot=(Button) findViewById(R.id.powrot);
-        powrot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(wys==1){
 
-                Intent powrot= new Intent(info.this, MainActivity.class);
-                startActivity(powrot);
+            komunikat.setText("GRATULACJE UKOŃCZYŁEŚ GRĘ!");
 
-            }
-        });
+        }else if(wys==2) {
+
+            komunikat.setText("PRZYKRO MI, NASTĘPNYM RAZEM SIĘ UDA!");
+        }else {
+
+            komunikat.setText("USTAW LICZBY MALEJĄCO");
+        }
+
     }
 
+    public void powrot(View view){
+
+        powrot=(Button)findViewById(R.id.powrot);
+        Intent pow= new Intent(info.this, MainActivity.class);
+        startActivity(pow);
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

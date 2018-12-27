@@ -10,7 +10,7 @@
 
         android:id="@+id/tableLayout2"
         android:layout_width="378dp"
-        android:layout_height="405dp"
+        android:layout_height="408dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
@@ -41,9 +41,10 @@
                 android:background="#fff"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="1"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_2"
@@ -54,9 +55,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="2 "
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_3"
@@ -67,9 +69,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="3 "
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
         </TableRow>
 
         <TableRow
@@ -88,9 +91,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text=" 4"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_5"
@@ -101,9 +105,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text=" 5"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_6"
@@ -114,9 +119,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="6"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
         </TableRow>
 
 
@@ -136,9 +142,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="7"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_8"
@@ -149,9 +156,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text=" 8"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_9"
@@ -162,9 +170,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text=" 9"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
         </TableRow>
 
         <TableRow
@@ -183,9 +192,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text=" 10"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_11"
@@ -196,9 +206,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="11"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
 
             <Button
                 android:id="@+id/Button_12"
@@ -209,9 +220,10 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/frenchpressfreefont"
                 android:gravity="center"
+                android:onClick="zadanie"
                 android:text="12"
-                android:textSize="32sp"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="32sp" />
         </TableRow>
     </TableLayout>
 
@@ -224,12 +236,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/frenchpressfreefont"
+        android:onClick="przycisk"
         android:text="Powrót"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        app:layout_constraintVertical_bias="0.537" />
 
     <TextView
         android:id="@+id/licznik"

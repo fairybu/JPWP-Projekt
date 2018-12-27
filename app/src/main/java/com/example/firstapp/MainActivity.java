@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent ot_ar = new Intent (MainActivity.this,reg.class);
-                ot_ar.putExtra("tryb_m","1");
+                ot_ar.putExtra("tryb","1");
+                ot_ar.putExtra("runda","1");
                 startActivity(ot_ar);
             }
 
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent ot_rzy= new Intent(MainActivity.this, reg.class);
-                ot_rzy.putExtra("tryb_m","2");
-
+                ot_rzy.putExtra("tryb","2");
+                ot_rzy.putExtra("runda","1");
                 startActivity(ot_rzy);
             }
 
@@ -49,14 +50,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent ot_bin= new Intent(MainActivity.this,reg.class);
-                ot_bin.putExtra("tryb_m","3");
-
-
+                ot_bin.putExtra("tryb","3");
+                ot_bin.putExtra("runda","1");
 
                 startActivity(ot_bin);
             }
-
-
 
     });
 
@@ -67,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         //przejścia do poszczególnych okien
         przejscie();

@@ -14,4 +14,6 @@
     <string name="zadanie_1">"Zadanie : "</string>
     <string name="tresc1">Ustaw liczby w sposób rosnący...</string>
     <string name="tresc_1">tresc_1</string>
+    <string name="powr_t">Powrót</string>
+    <string name="text">Text</string>
 </resources>

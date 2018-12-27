@@ -3,40 +3,38 @@ package com.example.firstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import static java.lang.Integer.parseInt;
 
 public class reg extends AppCompatActivity {
 
     public Button powrot;
     public Button dalej;
+    public TextView kom;
 
     //przycisk powrotu do menu głownego
-    public void przycisk(){
-        powrot=(Button)findViewById(R.id.powrot);
-        powrot.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    public void pow(View view) {
+        powrot = (Button) findViewById(R.id.powrot);
 
-                Intent powrot_menu=new Intent(reg.this, MainActivity.class);
-
+                Intent powrot_menu = new Intent(reg.this, MainActivity.class);
                 startActivity(powrot_menu);
-            }
-        }));
+    }
+    public void dalej(View view) {
 
         dalej=(Button)findViewById(R.id.dalej);
-        dalej.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
                 // otwieranie kolejnego okna przy przenoszeniu zmiennej dotyczącej trybu gry
                 Intent dalej_gra=new Intent(reg.this, run.class);
-                String tryb_m = getIntent().getStringExtra("tryb_m");
-                dalej_gra.putExtra("tryb",tryb_m);
-
+                String tryb = getIntent().getStringExtra("tryb");
+                String runda = getIntent().getStringExtra("runda");
+                dalej_gra.putExtra("tryb",tryb);
+                dalej_gra.putExtra("runda",runda);
                 startActivity(dalej_gra);
-            }
-        }));
+
     }
 
 
@@ -46,9 +44,21 @@ public class reg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
 
+        kom=(TextView)  findViewById(R.id.tresc1);
+
+        String runda = getIntent().getStringExtra("runda");
+        String tryb = getIntent().getStringExtra("tryb");
+        int run=parseInt(runda);
+
+        Log.i("runda0","="+runda);
+        Log.i("tryb0","="+tryb);
+
+        if(run==1){
+            kom.setText("USTAW LICZBY ROSNĄCO");
+        }else
+            kom.setText("USTAW LICZBY MALEJĄCO");
 
 
-        przycisk();
     }
 
 
