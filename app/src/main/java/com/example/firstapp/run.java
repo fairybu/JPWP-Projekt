@@ -1,19 +1,12 @@
 package com.example.firstapp;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
-
 import static java.lang.Integer.parseInt;
 
 public class run extends AppCompatActivity {
@@ -22,13 +15,17 @@ public class run extends AppCompatActivity {
     public Button po_run_main;
 
     //przejście do menu głownego
-    public void przycisk(View view){
+    public void przycisk(){
         po_run_main=(Button)findViewById(R.id.po_run);
+        po_run_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        countDownTimer.cancel();
-        Intent powrot_menu=new Intent(run.this, MainActivity.class);
-        startActivity(powrot_menu);
-
+                countDownTimer.cancel();
+                Intent powrot_menu=new Intent(run.this, MainActivity.class);
+                startActivity(powrot_menu);
+            }
+        });
     }
     //TABLIca z przyciskami
     private static final int[] idArray ={R.id.Button_1,R.id.Button_2,R.id.Button_3,
@@ -37,14 +34,12 @@ public class run extends AppCompatActivity {
             R.id.Button_10,R.id.Button_11,R.id.Button_12};
 
 
-    public Button[] button = new  Button[idArray.length];
-    ArrayList lista= new ArrayList();
-    int[] tab=new int[idArray.length];
-    int runda;
-    int sys;
+    private Button[] button = new  Button[idArray.length];
+
 
     int i;
-    int licznik_butt=0;
+    String buttonText;
+
 
 
     //zmienne do licznnika
@@ -58,32 +53,29 @@ public class run extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
 
-        String tryb = getIntent().getStringExtra("tryb");//pobieram info jaki tryb gry wybrano
-        String poziom = getIntent().getStringExtra("runda");
+        String tryb = getIntent().getStringExtra("tryb"); //pobieram info jaki tryb gry wybrano
+
 
         int wys = parseInt(tryb); //zamiana stringa trybu na intigera bo inaczej nie chciało dziłać
-
-        sys=wys;
-
-        int run=parseInt(poziom);
-
-        runda=run;
 
         licznik = findViewById(R.id.licznik);
 
         StartStop();// wywołanie funkcji licznika
 
+        przycisk();//wywołanie funkci powrotu
+
+        //przypisanie wartości buttom
+
+
         int zakres;
 
-        if(sys==1 || sys==2) zakres=20;
+        if(wys==1 || wys==2) zakres=20;
         else zakres=15;
 
-
-
+        int[] tab=new int[idArray.length];
         for (i = 0; i < idArray.length; i++) {
 
             button[i] = (Button) findViewById(idArray[i]);
-
 
             tab[i]= (int)Math.floor(Math.random()*zakres);
             for (int j=0;j<i;j++){
@@ -93,11 +85,10 @@ public class run extends AppCompatActivity {
                 }
             }
 
-            lista.add(tab[i]);
 
+          if (wys == 1) button[i].setText(Integer.toString(tab[i]));
+              else if (wys == 2) {
 
-          if (sys == 1) button[i].setText(Integer.toString(tab[i]));
-            else if (sys == 2) {
                   String wynik= Integer.toHexString(tab[i]);
                   if(wynik.length()==2) button[i].setText("000000"+wynik);
                   else button[i].setText("0000000"+wynik);
@@ -112,99 +103,9 @@ public class run extends AppCompatActivity {
 
               }
 
-
         }
-
-
 
     }
-
-    public void zadanie(View view){
-
-        String tryb = getIntent().getStringExtra("tryb");//pobieram info jaki tryb gry wybrano
-
-        po_run_main=(Button)findViewById(R.id.po_run);
-        int k = 0;
-
-        for(i=0;i<idArray.length;i++){
-
-            button[i]=(Button) findViewById(idArray[i]);
-
-            if(view.getId()== button[i].getId()){
-
-
-                 k=i;
-            }
-        }
-
-        Collections.sort(lista);
-
-        if(runda==1) {
-
-            if (lista.get(licznik_butt).equals(tab[k])) {
-
-                if (licznik_butt == 11) {
-
-                    licznik_butt = 0;
-                    Intent info = new Intent(run.this, reg.class);
-                    info.putExtra("runda", "2");
-                    info.putExtra("tryb",tryb);
-                    startActivity(info);
-
-
-                } else {
-                    licznik_butt = licznik_butt + 1;
-                    button[k].setBackgroundColor(Color.GRAY);
-                    button[k].setText(":)");
-                }
-            } else {
-
-                button[k].setBackgroundColor(Color.RED);
-                button[k].setText(":(");
-                Intent info = new Intent(run.this, info.class);
-                info.putExtra("info", "2");
-                startActivity(info);
-            }
-
-
-
-        }else{
-            Collections.sort(lista,Collections.reverseOrder());
-            Log.i("lista","="+lista);
-            Log.i("LICZNIK_BUTT", "=" + licznik_butt);
-
-            if (lista.get(licznik_butt).equals(tab[k])) {
-
-                if (licznik_butt == 11) {
-
-                    Intent info = new Intent(run.this, info.class);
-                    info.putExtra("info", "1");
-                    startActivity(info);
-
-
-                } else {
-                    licznik_butt = licznik_butt + 1;
-                    button[k].setBackgroundColor(Color.GRAY);
-                    button[k].setText(":)");
-                }
-            } else {
-
-                button[k].setBackgroundColor(Color.RED);
-                button[k].setText(":(");
-                Intent info = new Intent(run.this, info.class);
-                info.putExtra("info", "2");
-                startActivity(info);
-            }
-
-
-
-
-        }
-
-
-    }
-
-
 
     //funkcja licznika
     public void StartStop(){
