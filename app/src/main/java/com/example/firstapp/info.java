@@ -3,48 +3,52 @@ package com.example.firstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import static java.lang.Integer.parseInt;
 
 public class info extends AppCompatActivity {
 
-    private TextView komunikat;
-    private Button powrot;
+    private TextView com;
+    private Button back;
+    private ImageView smile;
+    private ImageView sad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        String tryb_m = getIntent().getStringExtra("tryb");
-        String runda_m = getIntent().getStringExtra("runda");
+        //pobieranie wartości o przebiegu gry
         String info = getIntent().getStringExtra("info");
+        int i = parseInt(info);
 
-        int wys = parseInt(info);
+        com =(TextView) findViewById(R.id.info);
+        smile=(ImageView)findViewById(R.id.smile);
+        sad=(ImageView)findViewById(R.id.sad);
 
-        komunikat=(TextView) findViewById(R.id.kom_1);
+        //wyświetlanie tekstu, adekwatnego do przebiegu gry
+        if(i==1){
 
-        if(wys==1){
+            com.setText("GRATULACJE UKOŃCZYŁEŚ GRĘ!");
+            smile.setVisibility(View.VISIBLE);
 
-            komunikat.setText("GRATULACJE UKOŃCZYŁEŚ GRĘ!");
 
-        }else if(wys==2) {
+        }else{
 
-            komunikat.setText("PRZYKRO MI, NASTĘPNYM RAZEM SIĘ UDA!");
-        }else {
-
-            komunikat.setText("USTAW LICZBY MALEJĄCO");
+            com.setText("PRZYKRO MI, NASTĘPNYM RAZEM SIĘ UDA!");
+            sad.setVisibility(View.VISIBLE);
         }
 
     }
 
+    //powrót do manu
     public void powrot(View view){
 
-        powrot=(Button)findViewById(R.id.powrot);
+        back =(Button)findViewById(R.id.back_2);
         Intent pow= new Intent(info.this, MainActivity.class);
         startActivity(pow);
     }

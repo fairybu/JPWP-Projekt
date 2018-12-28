@@ -19,38 +19,38 @@ import static java.lang.Integer.parseInt;
 public class run extends AppCompatActivity {
 
 
-    public Button po_run_main;
+    public Button back;
 
     //przejście do menu głownego
-    public void przycisk(View view){
-        po_run_main=(Button)findViewById(R.id.po_run);
+    public void go_menu(View view){
+        back =(Button)findViewById(R.id.back_3);
 
-        countDownTimer.cancel();
-        Intent powrot_menu=new Intent(run.this, MainActivity.class);
-        startActivity(powrot_menu);
+        countDownTimer.cancel(); //wyłączenie zliczania zegara
+        Intent back_menu=new Intent(run.this, MainActivity.class);
+        startActivity(back_menu);
 
     }
-    //TABLIca z przyciskami
+    //Tablica z przyciskami
     private static final int[] idArray ={R.id.Button_1,R.id.Button_2,R.id.Button_3,
             R.id.Button_4,R.id.Button_5,R.id.Button_6,
             R.id.Button_7,R.id.Button_8,R.id.Button_9,
             R.id.Button_10,R.id.Button_11,R.id.Button_12};
 
 
-    public Button[] button = new  Button[idArray.length];
-    ArrayList lista= new ArrayList();
-    int[] tab=new int[idArray.length];
-    int runda;
-    int sys;
+    public Button[] button = new  Button[idArray.length]; //tablica buttonów
+    ArrayList list = new ArrayList(); // list dotyczaca uporzadkowanych wartości
+    int[] tab =new int[idArray.length]; //tablica wartoci
+    int level; //zmienna przechowująca poziom gry
+    int mode;  //zmienna przechowująca tryb gry
 
-    int i;
-    int licznik_butt=0;
+    int i;   //zmienna pomocnicza
+    int count_but =0; //zmienna dotycząca ilości kliknięć
 
 
     //zmienne do licznnika
-    private TextView licznik;
+    private TextView timer; // pole tekstowe do czasu
     public CountDownTimer countDownTimer;
-    public long timeLeftinMilliseconds=181000;
+    public long timeLeftinMilliseconds=181000; //zmienna dotycząca czasu trwania rozgrywki
     public  boolean TimeRunning;
 
     @Override
@@ -58,109 +58,114 @@ public class run extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
 
-        String tryb = getIntent().getStringExtra("tryb");//pobieram info jaki tryb gry wybrano
-        String poziom = getIntent().getStringExtra("runda");
+        String mo = getIntent().getStringExtra("mode");//pobieram info jaki tryb gry wybrano
+        String lev = getIntent().getStringExtra("level");
 
-        int wys = parseInt(tryb); //zamiana stringa trybu na intigera bo inaczej nie chciało dziłać
+        int m = parseInt(mo); //zamiana stringa mo na intigera bo inaczej nie chciało dziłać
 
-        sys=wys;
+        mode = m;
 
-        int run=parseInt(poziom);
+        int l = parseInt(lev);
 
-        runda=run;
+        level = l;
 
-        licznik = findViewById(R.id.licznik);
+        timer = findViewById(R.id.timer); 
 
         StartStop();// wywołanie funkcji licznika
 
-        int zakres;
+        int range; //zmienna przechowująca warość zakresu licz jakie mają się losować
 
-        if(sys==1 || sys==2) zakres=20;
-        else zakres=15;
+        if(mode ==1 || mode ==2) range=20;
+        else range=15;
 
-
-
+        //pętla przyppisująca wartość dla każdego z buttonów
         for (i = 0; i < idArray.length; i++) {
 
             button[i] = (Button) findViewById(idArray[i]);
 
-
-            tab[i]= (int)Math.floor(Math.random()*zakres);
+            //przypisanie liczb do tablicy (bez powtórzeń)
+            tab[i]= (int)Math.floor(Math.random()*range);
             for (int j=0;j<i;j++){
                 if(tab[i]==tab[j]){
-                    tab[i]=(int)Math.floor(Math.random()*zakres);
+                    tab[i]=(int)Math.floor(Math.random()*range);
                     j=0;
                 }
             }
 
-            lista.add(tab[i]);
+            list.add(tab[i]); //przyisanie wartości do listy
 
-
-            if (sys == 1) button[i].setText(Integer.toString(tab[i]));
-            else if (sys == 2) {
-                String wynik= Integer.toHexString(tab[i]);
-                if(wynik.length()==2) button[i].setText("000000"+wynik);
-                else button[i].setText("0000000"+wynik);
+            //przypisanie wartości z tablicy do buttonów w odpowiedni sposoób(w zależności od trybu gry)
+            if (mode == 1) button[i].setText(Integer.toString(tab[i]));
+            else if (mode == 2) {
+                String results= Integer.toHexString(tab[i]);
+                if(results.length()==2) button[i].setText("000000"+results);
+                else button[i].setText("0000000"+results);
 
             }
             else {
-                String wynik=Integer.toBinaryString(tab[i]);
-                if(wynik.length()==1) button[i].setText("000"+wynik);
-                else if(wynik.length()==2) button[i].setText("00"+wynik);
-                else if(wynik.length()==3) button[i].setText("0"+wynik);
-                else button[i].setText(wynik);
+                String results=Integer.toBinaryString(tab[i]);
+                if(results.length()==1) button[i].setText("000"+results);
+                else if(results.length()==2) button[i].setText("00"+results);
+                else if(results.length()==3) button[i].setText("0"+results);
+                else button[i].setText(results);
 
             }
 
 
         }
+
 
 
 
     }
 
-    public void zadanie(View view){
+    public void action(View view){
 
-        String tryb = getIntent().getStringExtra("tryb");//pobieram info jaki tryb gry wybrano
+        String mode = getIntent().getStringExtra("mode");//pobieram info jaki tryb gry wybrano
 
-        po_run_main=(Button)findViewById(R.id.po_run);
-        int k = 0;
+        back =(Button)findViewById(R.id.back_3);
+        int k = 0; //zmienna pomocnicza 
 
+        //pętla sprawdzająca, który go_menu został wciśnięty
         for(i=0;i<idArray.length;i++){
 
             button[i]=(Button) findViewById(idArray[i]);
 
             if(view.getId()== button[i].getId()){
-
-
-                k=i;
+                
+                k=i; //pobieranie indeksu 
             }
         }
 
-        Collections.sort(lista);
+        Collections.sort(list); // sortowanie listy od min do max
 
-        if(runda==1) {
-
-            if (lista.get(licznik_butt).equals(tab[k])) {
-
-                if (licznik_butt == 11) {
-
-                    licznik_butt = 0;
+        //warunki w zależności od poziomu gry
+        if(level ==1) {
+            
+            //jeśli wartość wciśniętego buttona odpowiada kolejnemu elementowi z listy to w zależnośći od ilości kliknięć
+            if (list.get(count_but).equals(tab[k])) {
+                
+                //przensi nas do kolejnego levelu
+                if (count_but == 11) {
+                    
+                    count_but = 0;
+                    countDownTimer.cancel();
                     Intent info = new Intent(run.this, reg.class);
-                    info.putExtra("runda", "2");
-                    info.putExtra("tryb",tryb);
+                    info.putExtra("level", "2"); //przenoszzenie zmiennych do kolejnego okna
+                    info.putExtra("mode",mode);
                     startActivity(info);
 
-
+                //zwiększany zostaje licznik
                 } else {
-                    licznik_butt = licznik_butt + 1;
-                    button[k].setBackgroundColor(Color.GRAY);
+                    count_but = count_but + 1;
+                    button[k].setBackgroundColor(Color.GRAY); //zmiana koloru buttony gdy poprawnie został wciśnięty 
                     button[k].setText(":)");
                 }
-            } else {
+            } else { //jeśli źle wcisnęliśmy button to przechodzimy do okna z informacją 
 
-                button[k].setBackgroundColor(Color.RED);
+                button[k].setBackgroundColor(Color.RED); 
                 button[k].setText(":(");
+                countDownTimer.cancel();
                 Intent info = new Intent(run.this, info.class);
                 info.putExtra("info", "2");
                 startActivity(info);
@@ -168,22 +173,24 @@ public class run extends AppCompatActivity {
 
 
 
-        }else{
-            Collections.sort(lista,Collections.reverseOrder());
-            Log.i("lista","="+lista);
-            Log.i("LICZNIK_BUTT", "=" + licznik_butt);
+        }else{ //reguła dla poziomu 2 
+            
+            Collections.sort(list,Collections.reverseOrder()); //posortowanie listy od max do min
+            //Log.i("list","="+ list);
+            //Log.i("LICZNIK_BUTT", "=" + count_but); //sprawdzenie czy poprawnie się wykonuje 
 
-            if (lista.get(licznik_butt).equals(tab[k])) {
+            if (list.get(count_but).equals(tab[k])) { //sprawdzenie poprawności 
 
-                if (licznik_butt == 11) {
-
+                if (count_but == 11) { //jeśli poprawnie wykonaliśmy zadanie to przenosi nas do okna z informacją 
+                        
                     Intent info = new Intent(run.this, info.class);
                     info.putExtra("info", "1");
                     startActivity(info);
 
 
                 } else {
-                    licznik_butt = licznik_butt + 1;
+                    //zwiększanie licznika 
+                    count_but = count_but + 1;
                     button[k].setBackgroundColor(Color.GRAY);
                     button[k].setText(":)");
                 }
@@ -191,6 +198,7 @@ public class run extends AppCompatActivity {
 
                 button[k].setBackgroundColor(Color.RED);
                 button[k].setText(":(");
+                countDownTimer.cancel();
                 Intent info = new Intent(run.this, info.class);
                 info.putExtra("info", "2");
                 startActivity(info);
@@ -203,8 +211,6 @@ public class run extends AppCompatActivity {
 
 
     }
-
-
 
     //funkcja licznika
     public void StartStop(){
@@ -253,7 +259,7 @@ public class run extends AppCompatActivity {
         if(sekundy<10) czas+="0";
         czas+=sekundy;
 
-        licznik.setText(czas);
+        timer.setText(czas);
 
         //jak skończy się czas to przeskskuje do koljnego okna
         if(minuty==0&&sekundy==0)

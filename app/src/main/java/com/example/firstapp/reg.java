@@ -12,28 +12,32 @@ import static java.lang.Integer.parseInt;
 
 public class reg extends AppCompatActivity {
 
-    public Button powrot;
-    public Button dalej;
-    public TextView kom;
 
-    //przycisk powrotu do menu głownego
-    public void pow(View view) {
-        powrot = (Button) findViewById(R.id.powrot);
+    public Button back;
+    public Button next;
+    public TextView com;
 
-                Intent powrot_menu = new Intent(reg.this, MainActivity.class);
-                startActivity(powrot_menu);
+    //go_menu powrotu do menu głownego
+    public void back(View view) {
+        back = (Button) findViewById(R.id.back_1);
+
+                Intent back_menu = new Intent(reg.this, MainActivity.class); //powrót do menu
+                startActivity(back_menu);
     }
-    public void dalej(View view) {
+    public void next(View view) {
 
-        dalej=(Button)findViewById(R.id.dalej);
+        next =(Button)findViewById(R.id.next);
 
-                // otwieranie kolejnego okna przy przenoszeniu zmiennej dotyczącej trybu gry
-                Intent dalej_gra=new Intent(reg.this, run.class);
-                String tryb = getIntent().getStringExtra("tryb");
-                String runda = getIntent().getStringExtra("runda");
-                dalej_gra.putExtra("tryb",tryb);
-                dalej_gra.putExtra("runda",runda);
-                startActivity(dalej_gra);
+                // otwieranie kolejnego okna przy przenoszeniu zmiennej dotyczącej trybu gry i pobieranie zmiennych dotyczących poziomu
+                Intent next_game=new Intent(reg.this, run.class);
+
+                String mode = getIntent().getStringExtra("mode"); //pobieranie
+                String level = getIntent().getStringExtra("level");
+
+                next_game.putExtra("mode",mode); //przekazanie
+                next_game.putExtra("level",level);
+
+                startActivity(next_game);
 
     }
 
@@ -44,19 +48,21 @@ public class reg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
 
-        kom=(TextView)  findViewById(R.id.tresc1);
+        com =(TextView)  findViewById(R.id.reg);
 
-        String runda = getIntent().getStringExtra("runda");
-        String tryb = getIntent().getStringExtra("tryb");
-        int run=parseInt(runda);
+        //pobieranie wartości dotyczących rundy do sprawdzenia czy przesyłają się poprawnie
+        String level = getIntent().getStringExtra("level");
 
-        Log.i("runda0","="+runda);
-        Log.i("tryb0","="+tryb);
+        int r = parseInt(level);
 
-        if(run==1){
-            kom.setText("USTAW LICZBY ROSNĄCO");
+        Log.i("runda0","="+level);
+
+
+        //ustawienie reguły, w zalezności od poziomu gry
+        if(r==1){
+            com.setText("USTAW LICZBY ROSNĄCO");
         }else
-            kom.setText("USTAW LICZBY MALEJĄCO");
+            com.setText("USTAW LICZBY MALEJĄCO");
 
 
     }

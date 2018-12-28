@@ -8,50 +8,46 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    public Button ara;
+    public Button hex;
+    public Button bin;
 
-
-
-    String buttontext;
-    public Button sys_arabski;
-    public Button sys_hex;
-    public Button sys_binarny;
-
-    // przejście do systemu
+    // przejście do wybranego systemu ze zmiennymi
     public void przejscie(){
-        sys_arabski= (Button)findViewById(R.id.sys_arabski);
-        sys_arabski.setOnClickListener(new View.OnClickListener() {
+        ara = (Button)findViewById(R.id.ara);
+        ara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent ot_ar = new Intent (MainActivity.this,reg.class);
-                ot_ar.putExtra("tryb","1");
-                ot_ar.putExtra("runda","1");
+                ot_ar.putExtra("mode","1");
+                ot_ar.putExtra("level","1");
                 startActivity(ot_ar);
             }
 
         });
 
-        sys_hex =(Button)findViewById(R.id.sys_hex);
-        sys_hex.setOnClickListener(new View.OnClickListener() {
+        hex =(Button)findViewById(R.id.hex);
+        hex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent ot_rzy= new Intent(MainActivity.this, reg.class);
-                ot_rzy.putExtra("tryb","2");
-                ot_rzy.putExtra("runda","1");
-                startActivity(ot_rzy);
+                Intent ot_hex= new Intent(MainActivity.this, reg.class);
+                ot_hex.putExtra("mode","2");
+                ot_hex.putExtra("level","1");
+                startActivity(ot_hex);
             }
 
             });
 
-        sys_binarny=(Button)findViewById(R.id.sys_binarny);
-        sys_binarny.setOnClickListener(new View.OnClickListener() {
+        bin =(Button)findViewById(R.id.bin);
+        bin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent ot_bin= new Intent(MainActivity.this,reg.class);
-                ot_bin.putExtra("tryb","3");
-                ot_bin.putExtra("runda","1");
+                ot_bin.putExtra("mode","3");
+                ot_bin.putExtra("level","1");
 
                 startActivity(ot_bin);
             }

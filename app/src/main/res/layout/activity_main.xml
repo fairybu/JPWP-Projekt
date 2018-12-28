@@ -7,15 +7,15 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tiitle_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:fontFamily="@font/frenchpressfreefont"
         android:text="@string/witaj_w"
         android:textColor="@android:color/black"
         android:textSize="70sp"
-        android:fontFamily="@font/frenchpressfreefont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -24,60 +24,61 @@
         app:layout_constraintVertical_bias="0.106" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tittle_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/_01"
         android:fontFamily="@font/frenchpressfreefont"
+        android:text="@string/_01"
         android:textColor="@android:color/black"
         android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/tiitle_1"
         app:layout_constraintVertical_bias="0.033" />
 
     <Button
-        android:id="@+id/sys_arabski"
-        android:layout_width="120dp"
-        android:layout_height="75dp"
+        android:id="@+id/ara"
+        android:layout_width="160dp"
+        android:layout_height="78dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="209dp"
+        android:layout_marginBottom="244dp"
         android:fontFamily="@font/frenchpressfreefont"
         android:text="@string/system_arabski"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintTop_toBottomOf="@+id/tittle_2"
+        app:layout_constraintVertical_bias="0.45" />
 
     <Button
-        android:id="@+id/sys_hex"
-        android:layout_width="125dp"
-        android:layout_height="76dp"
+        android:id="@+id/hex"
+        android:layout_width="160dp"
+        android:layout_height="78dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="145dp"
         android:fontFamily="@font/frenchpressfreefont"
-        android:text="system hexalny"
+        android:text="@string/system_hexalny"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sys_binarny"
+        app:layout_constraintEnd_toStartOf="@+id/bin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sys_arabski"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintTop_toBottomOf="@+id/ara"
+        app:layout_constraintVertical_bias="0.166" />
 
     <Button
-        android:id="@+id/sys_binarny"
-        android:layout_width="115dp"
+        android:id="@+id/bin"
+        android:layout_width="160dp"
         android:layout_height="78dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -88,8 +89,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sys_hex"
-        app:layout_constraintTop_toBottomOf="@+id/sys_arabski"
+        app:layout_constraintStart_toEndOf="@+id/hex"
+        app:layout_constraintTop_toBottomOf="@+id/ara"
         app:layout_constraintVertical_bias="0.15" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,38 +7,38 @@
     tools:context=".reg">
 
     <Button
-        android:id="@+id/powrot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/back_1"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="184dp"
         android:fontFamily="@font/frenchpressfreefont"
-        android:onClick="pow"
+        android:onClick="back"
         android:text="@string/pow_ara_reg1"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dalej"
+        app:layout_constraintEnd_toStartOf="@+id/next"
         app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/dalej"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/next"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="184dp"
         android:fontFamily="@font/frenchpressfreefont"
-        android:onClick="dalej"
+        android:onClick="next"
         android:text="@string/da_ar_reg1"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/powrot" />
+        app:layout_constraintStart_toEndOf="@+id/back" />
 
     <TextView
-        android:id="@+id/Zadanie1"
+        android:id="@+id/tittle_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -55,7 +55,7 @@
         tools:text="Zadanie" />
 
     <TextView
-        android:id="@+id/tresc1"
+        android:id="@+id/reg"
         android:layout_width="384dp"
         android:layout_height="190dp"
         android:layout_marginStart="16dp"
@@ -68,9 +68,9 @@
         android:textAllCaps="false"
         android:textSize="50sp"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/dalej"
+        app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Zadanie1" />
+        app:layout_constraintTop_toBottomOf="@+id/tittle_3" />
 
 </android.support.constraint.ConstraintLayout>
