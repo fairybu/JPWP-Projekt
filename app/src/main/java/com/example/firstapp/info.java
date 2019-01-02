@@ -1,6 +1,7 @@
 package com.example.firstapp;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,10 +18,17 @@ public class info extends AppCompatActivity {
     private ImageView smile;
     private ImageView sad;
 
+    MediaPlayer sound_happy;
+    MediaPlayer sound_sad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        sound_happy=MediaPlayer.create(info.this,R.raw.happy);
+        sound_sad=MediaPlayer.create(info.this,R.raw.sad);
+
 
         //pobieranie wartości o przebiegu gry
         String info = getIntent().getStringExtra("info");
@@ -35,15 +43,27 @@ public class info extends AppCompatActivity {
 
             com.setText("GRATULACJE UKOŃCZYŁEŚ GRĘ!");
             smile.setVisibility(View.VISIBLE);
+            sound_happy.start();
+
 
 
         }else{
 
             com.setText("PRZYKRO MI, NASTĘPNYM RAZEM SIĘ UDA!");
             sad.setVisibility(View.VISIBLE);
+            sound_sad.start();
         }
 
     }
+
+    /*@Override
+    protected void onPause() {
+
+        super.onPause();
+        sound_happy.release();
+        sound_sad.release();
+
+    }*/
 
     //powrót do manu
     public void powrot(View view){

@@ -2,6 +2,7 @@ package com.example.firstapp;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,6 +53,9 @@ public class run extends AppCompatActivity {
     public CountDownTimer countDownTimer;
     public long timeLeftinMilliseconds=181000; //zmienna dotycząca czasu trwania rozgrywki
     public  boolean TimeRunning;
+
+    MediaPlayer sound_1; //zmienna do pliku dźwiękowego
+    MediaPlayer sound_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +125,9 @@ public class run extends AppCompatActivity {
 
     public void action(View view){
 
+        sound_1=MediaPlayer.create(run.this,R.raw.good);
+        sound_2=MediaPlayer.create(run.this,R.raw.good);
+
         String mode = getIntent().getStringExtra("mode");//pobieram info jaki tryb gry wybrano
 
         back =(Button)findViewById(R.id.back_3);
@@ -158,8 +165,10 @@ public class run extends AppCompatActivity {
                 //zwiększany zostaje licznik
                 } else {
                     count_but = count_but + 1;
-                    button[k].setBackgroundColor(Color.GRAY); //zmiana koloru buttony gdy poprawnie został wciśnięty 
+                    button[k].setBackgroundColor(Color.GREEN); //zmiana koloru buttony gdy poprawnie został wciśnięty
                     button[k].setText(":)");
+                    sound_1.start();  //włączenie dźwięku
+
                 }
             } else { //jeśli źle wcisnęliśmy button to przechodzimy do okna z informacją 
 
@@ -191,8 +200,9 @@ public class run extends AppCompatActivity {
                 } else {
                     //zwiększanie licznika 
                     count_but = count_but + 1;
-                    button[k].setBackgroundColor(Color.GRAY);
+                    button[k].setBackgroundColor(Color.GREEN);
                     button[k].setText(":)");
+                    sound_2.start();
                 }
             } else {
 
@@ -211,6 +221,15 @@ public class run extends AppCompatActivity {
 
 
     }
+
+    /*@Override //wyłączenie muzyki
+    protected void onPause() {
+
+        super.onPause();
+        sound_1.release();
+        sound_2.release();
+
+    }*/
 
     //funkcja licznika
     public void StartStop(){
